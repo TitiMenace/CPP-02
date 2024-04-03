@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschecro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/03 16:32:24 by tschecro          #+#    #+#             */
+/*   Updated: 2024/04/03 16:32:26 by tschecro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
@@ -42,7 +54,6 @@ class Fixed{
 		void	setRawBits(int const raw);
 		float	toFloat(void) const;
 		int		toInt(void) const;
-		friend std::ostream& operator<<(std::ostream& out, const Fixed& obj);
 
 		static Fixed	min(Fixed &a, Fixed &b);
 		static Fixed	max(Fixed &a, Fixed &b);
@@ -55,5 +66,6 @@ class Fixed{
 		static const int	bits = 8;
 		
 };
+		std::ostream& operator<<(std::ostream& out, const Fixed& obj);
 
 #endif

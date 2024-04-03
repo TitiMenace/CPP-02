@@ -1,4 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschecro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/03 16:12:46 by tschecro          #+#    #+#             */
+/*   Updated: 2024/04/03 16:32:40 by tschecro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
+
+
+
+/****************/
+/****CONSTRUC****/
+/****************/
 
 
 Fixed::Fixed(void){
@@ -11,7 +29,7 @@ Fixed::Fixed(void){
 Fixed::Fixed(const Fixed &value){
 
 //	std::cout << "Copy constructor called " << std::endl;
-	this->value = value.getRawBits();
+	*this = value;
 	return ;
 }
 
@@ -29,6 +47,32 @@ Fixed::Fixed(const float floaty){
 	return;
 }
 
+Fixed::~Fixed(void){
+
+//	std::cout << "Destructor called" << std::endl;
+	return ;
+}
+
+/****************/
+/****OPERATOR****/
+/****************/
+
+
+Fixed&	Fixed::operator=(const Fixed &to_assign){
+
+//	std::cout << "Copy assignment operator called" << std::endl;
+	this->value = to_assign.getRawBits();
+	return (*this);
+}
+
+bool	Fixed::operator==(const Fixed &value) const{
+
+	if (this->value == value.value)
+		return (true);
+	else
+		return (false);
+}
+
 float	Fixed::toFloat(void) const{
 
 	float	to_Float;
@@ -43,25 +87,12 @@ int	Fixed::toInt(void) const {
 	return (this->value >> this->bits);
 }
 
-
-Fixed::~Fixed(void){
-
-//	std::cout << "Destructor called" << std::endl;
-	return ;
-}
-
 int	Fixed::getRawBits(void) const {
 
 //	std::cout << "getRawbits member function called" << std::endl;
 	return (this->value);
 }
 
-Fixed&	Fixed::operator=(const Fixed &to_assign){
-
-//	std::cout << "Copy assignment operator called" << std::endl;
-	this->value = to_assign.getRawBits();
-	return (*this);
-}
 
 void	Fixed::setRawBits(int const raw){
 
@@ -107,13 +138,6 @@ bool	Fixed::operator<=(const Fixed &value) const{
 		return (false);
 }
 
-bool	Fixed::operator==(const Fixed &value) const{
-
-	if (this->value == value.value)
-		return (true);
-	else
-		return (false);
-}
 
 bool	Fixed::operator!=(const Fixed &value) const{
 
@@ -143,7 +167,7 @@ Fixed	Fixed::operator*(const Fixed &value) const{
 
 	Fixed	out;
 
-	out.setRawBits((float)(this->value * value.value) / 256);
+	out.setRawBits((long)this->value * value.value / 256);
 	return (out);
 }
 
@@ -151,7 +175,7 @@ Fixed	Fixed::operator/(const Fixed &value) const{
 
 	Fixed	out;
 
-	out.setRawBits((float)(this->value / value.value) / 256);
+	out.setRawBits((long)this->value * 256 / value.value);
 	return (out);
 }
 

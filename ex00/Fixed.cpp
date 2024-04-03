@@ -1,5 +1,16 @@
-#include "Fixed.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschecro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/03 15:31:02 by tschecro          #+#    #+#             */
+/*   Updated: 2024/04/03 16:05:51 by tschecro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "Fixed.hpp"
 
 Fixed::Fixed(void){
 
@@ -11,7 +22,7 @@ Fixed::Fixed(void){
 Fixed::Fixed(const Fixed &value){
 
 	std::cout << "Copy constructor called " << std::endl;
-	this->value = value.getRawBits();
+	*this = value;
 	return ;
 
 }
@@ -34,7 +45,6 @@ Fixed&	Fixed::operator=(const Fixed &to_assign){
 	this->value = to_assign.getRawBits();
 	return (*this);
 }
-
 
 void	Fixed::setRawBits(int const raw){
 

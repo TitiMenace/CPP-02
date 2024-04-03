@@ -1,5 +1,4 @@
 
-
 NAME 		= fixed
 
 CC			= c++

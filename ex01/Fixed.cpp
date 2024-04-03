@@ -1,5 +1,16 @@
-#include "Fixed.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschecro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/03 15:33:51 by tschecro          #+#    #+#             */
+/*   Updated: 2024/04/03 16:09:23 by tschecro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "Fixed.hpp"
 
 Fixed::Fixed(void){
 
@@ -11,20 +22,20 @@ Fixed::Fixed(void){
 Fixed::Fixed(const Fixed &value){
 
 	std::cout << "Copy constructor called " << std::endl;
-	this->value = value.getRawBits();
+	*this = value;
 	return ;
 }
 
 Fixed::Fixed(const int integer){
 
-	std::cout << "Integer constructor called" << std::endl;
+	std::cout << "Int constructor called" << std::endl;
 	this->value = integer << this->bits;
 	return;
 }
 
 Fixed::Fixed(const float floaty){
 
-	std::cout << "Floaty constructor called" << std::endl;
+	std::cout << "Float constructor called" << std::endl;
 	this->value = (int)roundf((floaty * (1 << this->bits)));
 	return;
 }
@@ -52,7 +63,7 @@ Fixed::~Fixed(void){
 
 int	Fixed::getRawBits(void) const {
 
-	std::cout << "getRawbits member function called" << std::endl;
+//	std::cout << "getRawbits member function called" << std::endl;
 	return (this->value);
 }
 
